@@ -52,6 +52,18 @@ texture.png是当前的车辆渲染结果，test_total.png是渲染车辆叠加�
 1. 将fbx格式车辆模型转换为obj模型，并导入到FCA中，执行训练可能报显存不足，那么就需要通过blender压缩obj文件。
 2. 将数据集导入FCA代码中。
 3. 修改代码配置，执行训练
+注意，在使用自建数据集时，需要把nmr_test.py文件中get_param()函数进行修改，改为：
+
+    for i in range(0, 3):
+   
+        eye[i] = (carlaTcam[0][i] - carlaTveh[0][i]) * scale
+   
+        if i == 2:
+   
+            eye[i] = (carlaTcam[0][i] - (carlaTveh[0][i]+0.93)) * scale
+   
+注意，这个0.93是对车辆位置的调整，车辆位置一般是车辆的几何中心，我们拍摄点一般在车顶中心。
+当采用下载的数据集时，需要将这部分代码恢复为原代码。
 
 ## Overview
 This is the official implementation and case study of the Full-coverage Vehicle Camouflage(FCA) method proposed in our AAAI 2022 paper [FCA: Learning a 3D Full-coverage Vehicle Camouflage for Multi-view Physical Adversarial Attack](https://arxiv.org/abs/2109.07193). 
