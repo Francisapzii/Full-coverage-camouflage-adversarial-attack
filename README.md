@@ -43,7 +43,7 @@ texture.png是当前的车辆渲染结果，test_total.png是渲染车辆叠加�
 3. 编辑此fbx模型，以便能够导入carlaUE4；包括设置车辆模型中，对车轮的旋转方向和移动等进行约束等；
 4. 重新导出fbx模型，然后导入到carlaUE4中；包括创建车辆蓝图、修改车轮尺寸等等。
 ### 创建数据集
-1. 在carla中制作vehicle_with_customized_camera.py, 用于驱动车辆在carla中运行。
+1. 在carla中制作vehicle_manual_control_with_customized_camera.py, 用于驱动车辆在carla中运行。
 2. 采用自己导入的车辆模型，使其在carlaUE4中运行起来，并采集图片，生成携带相机和车辆全局位置（transform）的npy文件和图片文件。
 3. 制作每张图片的mask.png，既：将图片中的车辆的RGB使用白色（255,255,255）替代，其他部分采用黑色（0，0，0）替代
 4. 制作每张图片的label，yolo格式。
