@@ -42,12 +42,13 @@ texture.png是当前的车辆渲染结果，test_total.png是渲染车辆叠加�
 2. 制作车辆模型，模型的格式是fbx，这个车辆既是被用来进行纹理生成的，生成的纹理将能够将车辆对于OD检测系统隐身；
 3. 编辑此fbx模型，以便能够导入carlaUE4；包括设置车辆模型中，对车轮的旋转方向和移动等进行约束等；
 4. 重新导出fbx模型，然后导入到carlaUE4中；包括创建车辆蓝图、修改车轮尺寸等等。
+5. 通过camera_test.py，调试和配置车辆上放置的摄像头。
+6. 在carla中制作vehicle_manual_control_with_customized_camera.py, 用于驱动车辆在carla中运行。
 ### 创建数据集
-1. 在carla中制作vehicle_manual_control_with_customized_camera.py, 用于驱动车辆在carla中运行。
-2. 采用自己导入的车辆模型，使其在carlaUE4中运行起来，并采集图片，生成携带相机和车辆全局位置（transform）的npy文件和图片文件。
-3. 制作每张图片的mask.png，既：将图片中的车辆的RGB使用白色（255,255,255）替代，其他部分采用黑色（0，0，0）替代
-4. 制作每张图片的label，yolo格式。
-5. 将数据集分割成train, train_new, masks, label, test等
+1. 采用自己导入的车辆模型，使其在carlaUE4中运行起来，并采集图片，生成携带相机和车辆全局位置（transform）的npy文件和图片文件。
+2. 制作每张图片的mask.png，既：将图片中的车辆的RGB使用白色（255,255,255）替代，其他部分采用黑色（0，0，0）替代
+3. 制作每张图片的label，yolo格式。
+4. 将数据集分割成train, train_new, masks, label, test等
 ### 将车辆模型和数据集加入FCA代码中；
 1. 将fbx格式车辆模型转换为obj模型，并导入到FCA中，执行训练可能报显存不足，那么就需要通过blender压缩obj文件。
 2. 将数据集导入FCA代码中。
